@@ -1,8 +1,9 @@
-package com.example.avaliacao_003
+package com.example.avaliacao_003.view.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.avaliacao_003.ui.main.MainFragment
+import com.example.avaliacao_003.R
+import com.example.avaliacao_003.view.fragments.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

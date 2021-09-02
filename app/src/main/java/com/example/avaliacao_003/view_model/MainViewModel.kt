@@ -1,4 +1,4 @@
-package com.example.avaliacao_003.ui.main
+package com.example.avaliacao_003.view_model
 
 import androidx.lifecycle.ViewModel
 
