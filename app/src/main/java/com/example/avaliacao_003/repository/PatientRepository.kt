@@ -12,8 +12,20 @@ class PatientRepository @Inject constructor(
         return patientDAO.getPatients()
     }
 
+    fun getPatient(id: Long): Patient {
+        return patientDAO.getPatient(id)
+    }
+
     fun addPatient(patient: Patient) {
         return patientDAO.insertPatient(patient)
+    }
+
+    fun updatePatient(patient: Patient) {
+        patientDAO.updatePatient(patient)
+    }
+
+    fun deletePatient(patient: Patient) {
+        patientDAO.deletePatient(patient)
     }
 
 }

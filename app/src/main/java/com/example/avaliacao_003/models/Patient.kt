@@ -3,6 +3,7 @@ package com.example.avaliacao_003.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Patient(
@@ -19,4 +20,4 @@ data class Patient(
     @ColumnInfo(name = "patient_gender")
     val gender: String
 
-)
+) : Serializable
