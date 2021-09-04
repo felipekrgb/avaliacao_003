@@ -6,6 +6,7 @@ import android.view.View
 import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.MainActivityBinding
 import com.example.avaliacao_003.utils.replaceFragment
+import com.example.avaliacao_003.view.fragments.MedicFragment
 import com.example.avaliacao_003.view.fragments.PatientFragment
 import com.example.avaliacao_003.view.fragments.SpecialityFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
             setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.nav_patients -> replaceFragment(PatientFragment.newInstance())
-                    R.id.nav_specialties -> replaceFragment(SpecialityFragment.newInstance())
+                    R.id.nav_specialities -> replaceFragment(SpecialityFragment.newInstance())
+                    R.id.nav_medics -> replaceFragment(MedicFragment.newInstance())
                 }
                 true
             }

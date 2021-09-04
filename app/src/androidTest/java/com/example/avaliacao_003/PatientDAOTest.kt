@@ -74,7 +74,7 @@ class PatientDAOTest {
 
         dao.deletePatient(patient3)
 
-        val listOfPatients = mutableListOf(patient1, patient2)
+        val listOfPatients = listOf(patient1, patient2)
 
         val results = dao.getPatients()
         assertThat(results).containsExactlyElementsIn(listOfPatients)

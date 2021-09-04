@@ -1,6 +1,7 @@
 package com.example.avaliacao_003.database.dao
 
 import androidx.room.*
+import androidx.room.OnConflictStrategy.ABORT
 import com.example.avaliacao_003.models.Patient
 
 @Dao
@@ -12,7 +13,7 @@ interface PatientDAO {
     @Query("SELECT * FROM Patient WHERE patient_id = :id")
     fun getPatient(id: Long): Patient
 
-    @Insert
+    @Insert(onConflict = ABORT)
     fun insertPatient(patient: Patient)
 
     @Update

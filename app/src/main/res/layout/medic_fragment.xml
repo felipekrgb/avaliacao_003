@@ -1,41 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingStart="16dp"
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
-    tools:context=".view.fragments.PatientFragment">
+    tools:context=".view.fragments.MedicFragment">
 
     <EditText
         android:id="@+id/nameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/ageEditText"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Idade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameEditText" />
+        android:hint="Nome" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/genderTextInputLayout"
+        android:id="@+id/specialitiesTextInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Gênero"
+        android:hint="Especialidade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ageEditText">
+        app:layout_constraintTop_toBottomOf="@id/nameEditText">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:layout_width="match_parent"
@@ -45,43 +36,43 @@
 
     <Button
         android:id="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/specialitiesTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Salvar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genderTextInputLayout" />
+        android:text="Salvar" />
 
     <View
         android:id="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
-        android:background="@color/purple_500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/saveButton" />
+        android:background="@color/purple_500" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/patientsRecyclerView"
+        android:id="@+id/medicsRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view" />
+        android:layout_marginTop="16dp" />
 
     <TextView
-        android:id="@+id/emptyPacientsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NENHUM PACIENTE CADASTRADO"
-        android:visibility="gone"
+        android:id="@+id/emptyMedicsTextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view" />
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NENHUMA ESPECIALIDADE CADASTRADA"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

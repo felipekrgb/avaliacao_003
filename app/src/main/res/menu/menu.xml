@@ -7,8 +7,13 @@
         android:title="Pacientes" />
 
     <item
-        android:id="@+id/nav_specialties"
+        android:id="@+id/nav_specialities"
         android:icon="@drawable/ic_android"
         android:title="Especialidades" />
+
+    <item
+        android:id="@+id/nav_medics"
+        android:icon="@drawable/ic_android"
+        android:title="Médicos" />
 
 </menu>

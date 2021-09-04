@@ -6,28 +6,72 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.avaliacao_003.R
+import com.example.avaliacao_003.adapter.SpecialityAdapter
+import com.example.avaliacao_003.databinding.SpecialityFragmentBinding
+import com.example.avaliacao_003.models.Speciality
+import com.example.avaliacao_003.utils.hideKeyboard
 import com.example.avaliacao_003.view_model.SpecialityViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class SpecialityFragment : Fragment() {
+@AndroidEntryPoint
+class SpecialityFragment : Fragment(R.layout.speciality_fragment) {
 
     companion object {
         fun newInstance() = SpecialityFragment()
     }
 
+    private lateinit var binding: SpecialityFragmentBinding
     private lateinit var viewModel: SpecialityViewModel
+    private lateinit var recyclerView: RecyclerView
+    private val adapter = SpecialityAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.speciality_fragment, container, false)
+    private val observerPatients = Observer<List<Speciality>> { specialities ->
+        if (specialities.isEmpty()) {
+            binding.emptySpecialitiesTextView.visibility = View.VISIBLE
+        } else {
+            binding.emptySpecialitiesTextView.visibility = View.GONE
+            adapter.update(specialities)
+        }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = SpecialityFragmentBinding.bind(view)
+
         viewModel = ViewModelProvider(this).get(SpecialityViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        recyclerView = binding.specialitiesRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
+
+        viewModel.specialities.observe(viewLifecycleOwner, observerPatients)
+
+        setupAddPatient()
+
+        viewModel.getSpecialities()
     }
 
+    private fun setupAddPatient() {
+        binding.saveButton.setOnClickListener {
+            val nameEditText = binding.nameEditText
+
+            if (nameEditText.text.toString().isNotEmpty()) {
+                viewModel.addSpeciality(
+                    Speciality(
+                        name = nameEditText.text.toString()
+                    )
+                )
+
+                (requireActivity() as AppCompatActivity).hideKeyboard()
+
+                nameEditText.text = null
+                nameEditText.clearFocus()
+            }
+        }
+    }
 }

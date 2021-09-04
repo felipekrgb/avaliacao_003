@@ -14,6 +14,7 @@
         android:theme="@style/Theme.Avaliacao_003">
         <activity
             android:name=".view.activities.DetailsActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true" />
         <activity
             android:name=".view.activities.MainActivity"

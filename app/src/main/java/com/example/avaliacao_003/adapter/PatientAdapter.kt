@@ -42,6 +42,7 @@ class PatientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(patient: Patient) {
         binding.idTextView.text = patient.id.toString()
         binding.nameTextView.text = patient.name
+        binding.genderTextView.text = patient.gender.type
     }
 
 }
