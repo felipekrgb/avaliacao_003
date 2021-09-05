@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +23,7 @@ import com.example.avaliacao_003.models.Patient
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.hideKeyboard
 import com.example.avaliacao_003.utils.replaceFragment
+import com.example.avaliacao_003.utils.snackBar
 import com.example.avaliacao_003.view.activities.DetailsActivity
 import com.example.avaliacao_003.view.activities.MainActivity
 import com.example.avaliacao_003.view_model.PatientViewModel
@@ -88,12 +91,14 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
                     )
                 )
 
-                (requireActivity() as AppCompatActivity).hideKeyboard()
+                showSnackbar(R.string.patient_added, R.color.green)
 
                 nameEditText.text = null
                 ageEditText.text = null
                 binding.genderTextInputLayout.editText?.setText("")
                 binding.genderTextInputLayout.clearFocus()
+            } else {
+                showSnackbar(R.string.patient_no_fields, R.color.red)
             }
         }
     }
@@ -123,6 +128,12 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
                 it.type == selected
             }
         }
+    }
+
+    fun showSnackbar(@StringRes msgId: Int, @ColorRes colorId: Int) {
+        val actv = requireActivity() as MainActivity
+        val bottomNav = actv?.binding.bottomNav
+        actv!!.snackBar(bottomNav!!, msgId, colorId)
     }
 
 }
