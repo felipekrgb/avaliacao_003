@@ -4,14 +4,11 @@ import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,9 +17,6 @@ import com.example.avaliacao_003.adapter.PatientAdapter
 import com.example.avaliacao_003.databinding.PatientFragmentBinding
 import com.example.avaliacao_003.models.Gender
 import com.example.avaliacao_003.models.Patient
-import com.example.avaliacao_003.models.Speciality
-import com.example.avaliacao_003.utils.hideKeyboard
-import com.example.avaliacao_003.utils.replaceFragment
 import com.example.avaliacao_003.utils.snackBar
 import com.example.avaliacao_003.view.activities.DetailsActivity
 import com.example.avaliacao_003.view.activities.MainActivity
@@ -130,10 +124,10 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
         }
     }
 
-    fun showSnackbar(@StringRes msgId: Int, @ColorRes colorId: Int) {
-        val actv = requireActivity() as MainActivity
-        val bottomNav = actv?.binding.bottomNav
-        actv!!.snackBar(bottomNav!!, msgId, colorId)
+    private fun showSnackbar(@StringRes msgId: Int, @ColorRes colorId: Int) {
+        val activity = requireActivity() as MainActivity
+        val bottomNav = activity.binding.bottomNav
+        activity.snackBar(bottomNav, msgId, colorId)
     }
 
 }

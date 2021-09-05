@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +17,8 @@ import com.example.avaliacao_003.adapter.SpecialityAdapter
 import com.example.avaliacao_003.databinding.SpecialityFragmentBinding
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.hideKeyboard
+import com.example.avaliacao_003.utils.snackBar
+import com.example.avaliacao_003.view.activities.MainActivity
 import com.example.avaliacao_003.view_model.SpecialityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -67,11 +71,19 @@ class SpecialityFragment : Fragment(R.layout.speciality_fragment) {
                     )
                 )
 
-                (requireActivity() as AppCompatActivity).hideKeyboard()
+                showSnackbar(R.string.speciality_added, R.color.green)
 
                 nameEditText.text = null
                 nameEditText.clearFocus()
+            } else {
+                showSnackbar(R.string.speciality_no_fields, R.color.red)
             }
         }
+    }
+
+    private fun showSnackbar(@StringRes msgId: Int, @ColorRes colorId: Int) {
+        val activity = requireActivity() as MainActivity
+        val bottomNav = activity.binding.bottomNav
+        activity.snackBar(bottomNav, msgId, colorId)
     }
 }

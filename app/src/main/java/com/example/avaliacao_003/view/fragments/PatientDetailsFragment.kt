@@ -4,16 +4,17 @@ import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import androidx.lifecycle.Observer
 import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.PatientDetailsFragmentBinding
 import com.example.avaliacao_003.models.Gender
 import com.example.avaliacao_003.models.Patient
+import com.example.avaliacao_003.utils.snackBar
 import com.example.avaliacao_003.view.activities.DetailsActivity
 import com.example.avaliacao_003.view.activities.MainActivity
 import com.example.avaliacao_003.view_model.PatientDetailsViewModel
@@ -65,17 +66,18 @@ class PatientDetailsFragment : Fragment(R.layout.patient_details_fragment) {
 
         val patientId = arguments?.getLong("patient_id") as Long
 
-        viewModel.getPatient(patientId)
-
         viewModel.patient.observe(viewLifecycleOwner, observerPatient)
         viewModel.didUpdateOrDelete.observe(viewLifecycleOwner, observerUpdateOrDelete)
 
         setupEditButton()
         setupDeleteButton()
+        setupSpinnerGender()
+
+        viewModel.getPatient(patientId)
 
     }
 
-    fun setupEditButton() {
+    private fun setupEditButton() {
         binding.editButton.setOnClickListener {
             val name = binding.nameEditText.text.toString()
             val age = binding.ageEditText.text.toString()
@@ -91,11 +93,13 @@ class PatientDetailsFragment : Fragment(R.layout.patient_details_fragment) {
                         gender = selectedGender!!
                     )
                 )
+            } else {
+                showSnackbar(R.string.no_fields_changed, R.color.red)
             }
         }
     }
 
-    fun setupDeleteButton() {
+    private fun setupDeleteButton() {
         binding.deleteButton.setOnClickListener {
             viewModel.deletePatient(patient)
         }
@@ -126,5 +130,10 @@ class PatientDetailsFragment : Fragment(R.layout.patient_details_fragment) {
                 it.type == selected
             }
         }
+    }
+
+    private fun showSnackbar(@StringRes msgId: Int, @ColorRes colorId: Int) {
+        val activity = requireActivity() as DetailsActivity
+        activity.snackBar(binding.nameEditText, msgId, colorId)
     }
 }
