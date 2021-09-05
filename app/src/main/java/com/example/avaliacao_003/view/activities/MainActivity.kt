@@ -23,7 +23,10 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        replaceFragment(PatientFragment.newInstance())
+        when (intent.getStringExtra("type")) {
+            "Speciality" -> replaceFragment(SpecialityFragment.newInstance())
+            else -> replaceFragment(PatientFragment.newInstance())
+        }
 
         binding.bottomNav.apply {
             setOnItemSelectedListener {

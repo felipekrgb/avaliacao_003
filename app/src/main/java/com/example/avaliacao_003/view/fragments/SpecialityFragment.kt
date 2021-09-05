@@ -1,5 +1,6 @@
 package com.example.avaliacao_003.view.fragments
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import com.example.avaliacao_003.databinding.SpecialityFragmentBinding
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.hideKeyboard
 import com.example.avaliacao_003.utils.snackBar
+import com.example.avaliacao_003.view.activities.DetailsActivity
 import com.example.avaliacao_003.view.activities.MainActivity
 import com.example.avaliacao_003.view_model.SpecialityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +34,11 @@ class SpecialityFragment : Fragment(R.layout.speciality_fragment) {
     private lateinit var binding: SpecialityFragmentBinding
     private lateinit var viewModel: SpecialityViewModel
     private lateinit var recyclerView: RecyclerView
-    private val adapter = SpecialityAdapter()
+    private val adapter = SpecialityAdapter() { speciality ->
+        val intentToDetails = Intent(activity?.applicationContext, DetailsActivity::class.java)
+        intentToDetails.putExtra("details", speciality)
+        startActivity(intentToDetails)
+    }
 
     private val observerPatients = Observer<List<Speciality>> { specialities ->
         if (specialities.isEmpty()) {

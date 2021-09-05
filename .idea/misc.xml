@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/medic_fragment.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/patient_details_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/patient_fragment.xml" value="0.27920705514717953" />
+        <entry key="app/src/main/res/layout/speciality_details_fragment.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/speciality_fragment.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/spinner_item_gender.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/layout/spinner_item_specialities.xml" value="0.240625" />

@@ -44,7 +44,8 @@ class PatientDetailsFragment : Fragment(R.layout.patient_details_fragment) {
         selectedGender = Gender.values().find {
             it == patient.gender
         }
-        (requireActivity() as DetailsActivity).supportActionBar?.title = patient.name
+        (requireActivity() as DetailsActivity).supportActionBar?.title =
+            "${patient.id} - ${patient.name}"
 
         binding.nameEditText.setText(patient.name)
         binding.ageEditText.setText(patient.age.toString())

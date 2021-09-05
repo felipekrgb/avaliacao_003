@@ -8,7 +8,8 @@ import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.ItemSpecialityBinding
 import com.example.avaliacao_003.models.Speciality
 
-class SpecialityAdapter : RecyclerView.Adapter<SpecialityViewHolder>() {
+class SpecialityAdapter(val onClick: (Speciality) -> Unit) :
+    RecyclerView.Adapter<SpecialityViewHolder>() {
 
     private var specialitiesList: MutableList<Speciality> = mutableListOf()
 
@@ -21,6 +22,9 @@ class SpecialityAdapter : RecyclerView.Adapter<SpecialityViewHolder>() {
     override fun onBindViewHolder(holder: SpecialityViewHolder, position: Int) {
         specialitiesList[position].apply {
             holder.bind(this)
+            holder.itemView.setOnClickListener {
+                onClick(this)
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.avaliacao_003.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Speciality(
@@ -12,8 +13,8 @@ data class Speciality(
 
     @ColumnInfo(name = "speciality_name")
     val name: String
-) {
-    override fun toString(): String {
-        return name
-    }
+) : Serializable {
+//    override fun toString(): String {
+//        return name
+//    }
 }

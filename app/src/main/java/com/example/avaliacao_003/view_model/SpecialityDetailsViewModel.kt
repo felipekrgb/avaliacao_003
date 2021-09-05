@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.repository.SpecialityRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class SpecialityDetailsViewModel @Inject constructor(
     private val repository: SpecialityRepository
 ) : ViewModel() {
