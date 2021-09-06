@@ -96,7 +96,7 @@ class MedicDetailsFragment : Fragment(R.layout.medic_details_fragment) {
                 viewModel.updateMedic(
                     Medic(
                         id = medic.medic!!.id,
-                        name = medic.medic!!.name,
+                        name = name,
                         specialityFK = selectedSpeciality!!.id
                     )
                 )
