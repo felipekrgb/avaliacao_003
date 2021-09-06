@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/item_speciality.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.240625" />
+        <entry key="app/src/main/res/layout/medic_details_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/medic_fragment.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/patient_details_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/patient_fragment.xml" value="0.27920705514717953" />

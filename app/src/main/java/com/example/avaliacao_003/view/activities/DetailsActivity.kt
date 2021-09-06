@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.DetailsActivityBinding
+import com.example.avaliacao_003.models.MedicWithSpeciality
 import com.example.avaliacao_003.models.Patient
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.replaceFragment
+import com.example.avaliacao_003.view.fragments.MedicDetailsFragment
 import com.example.avaliacao_003.view.fragments.PatientDetailsFragment
 import com.example.avaliacao_003.view.fragments.SpecialityDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +32,10 @@ class DetailsActivity : AppCompatActivity() {
             )
             is Speciality -> replaceFragment(
                 SpecialityDetailsFragment.newInstance(details.id),
+                R.id.containerDetails
+            )
+            is MedicWithSpeciality -> replaceFragment(
+                MedicDetailsFragment.newInstance(details.medic!!.id),
                 R.id.containerDetails
             )
         }

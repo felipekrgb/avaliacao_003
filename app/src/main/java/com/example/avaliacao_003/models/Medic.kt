@@ -1,6 +1,7 @@
 package com.example.avaliacao_003.models
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity
 data class Medic(
@@ -12,7 +13,7 @@ data class Medic(
     val name: String,
 
     val specialityFK: Long
-)
+) : Serializable
 
 
 data class MedicWithSpeciality(
@@ -23,4 +24,4 @@ data class MedicWithSpeciality(
         entityColumn = "speciality_id"
     )
     val speciality: Speciality?
-)
+) : Serializable

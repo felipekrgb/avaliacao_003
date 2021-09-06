@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         when (intent.getStringExtra("type")) {
             "Speciality" -> replaceFragment(SpecialityFragment.newInstance())
+            "Medic" -> replaceFragment(MedicFragment.newInstance())
             else -> replaceFragment(PatientFragment.newInstance())
         }
 

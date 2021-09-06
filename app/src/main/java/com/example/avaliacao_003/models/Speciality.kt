@@ -13,8 +13,8 @@ data class Speciality(
 
     @ColumnInfo(name = "speciality_name")
     val name: String
-) : Serializable {
-//    override fun toString(): String {
-//        return name
-//    }
+) : Serializable {    override fun toString(): String {
+    return name
+}
+
 }

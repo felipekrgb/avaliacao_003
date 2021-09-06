@@ -1,5 +1,6 @@
 package com.example.avaliacao_003.view.fragments
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import com.example.avaliacao_003.models.Medic
 import com.example.avaliacao_003.models.MedicWithSpeciality
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.hideKeyboard
+import com.example.avaliacao_003.view.activities.DetailsActivity
 import com.example.avaliacao_003.view_model.MedicViewModel
 import com.example.avaliacao_003.view_model.SpecialityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +36,11 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
     private lateinit var viewModel: MedicViewModel
     private lateinit var viewModelSpeciality: SpecialityViewModel
     private lateinit var recyclerView: RecyclerView
-    private var adapter = MedicAdapter()
+    private var adapter = MedicAdapter() { medic ->
+        val intentToDetails = Intent(activity?.applicationContext, DetailsActivity::class.java)
+        intentToDetails.putExtra("details", medic)
+        startActivity(intentToDetails)
+    }
     private var selectedSpeciality: Speciality? = null
 
     private val observerSpecialities = Observer<List<Speciality>> { specialities ->
@@ -61,8 +67,8 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
-        viewModelSpeciality.specialities.observe(viewLifecycleOwner, observerSpecialities)
         viewModel.medics.observe(viewLifecycleOwner, observerMedics)
+        viewModelSpeciality.specialities.observe(viewLifecycleOwner, observerSpecialities)
 
         setupAddMedic()
 
@@ -86,8 +92,8 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
                 (requireActivity() as AppCompatActivity).hideKeyboard()
 
                 nameEditText.text = null
-                binding.specialitiesTextInputLayout.editText?.setText("")
-                binding.specialitiesTextInputLayout.clearFocus()
+                binding.specialityTextInputLayout.editText?.setText("")
+                binding.specialityTextInputLayout.clearFocus()
                 selectedSpeciality = null
             }
 
@@ -103,7 +109,7 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
             )
 
         val autoCompleteBrand: AutoCompleteTextView? =
-            binding.specialitiesTextInputLayout.editText as? AutoCompleteTextView
+            binding.specialityTextInputLayout.editText as? AutoCompleteTextView
 
         autoCompleteBrand?.threshold = 1
 
