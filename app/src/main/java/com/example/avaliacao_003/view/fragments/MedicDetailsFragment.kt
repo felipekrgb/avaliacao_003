@@ -41,8 +41,6 @@ class MedicDetailsFragment : Fragment(R.layout.medic_details_fragment) {
     private lateinit var medic: MedicWithSpeciality
     private var selectedSpeciality: Speciality? = null
 
-
-    // @TODO tratar quando é deletado uma especialidade
     private val observerMedic = Observer<MedicWithSpeciality> { medic ->
         this.medic = medic
         selectedSpeciality = medic.speciality

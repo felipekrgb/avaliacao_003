@@ -6,10 +6,12 @@ import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.DetailsActivityBinding
 import com.example.avaliacao_003.models.MedicWithSpeciality
 import com.example.avaliacao_003.models.Patient
+import com.example.avaliacao_003.models.ScheduleWithMedicAndPatient
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.replaceFragment
 import com.example.avaliacao_003.view.fragments.MedicDetailsFragment
 import com.example.avaliacao_003.view.fragments.PatientDetailsFragment
+import com.example.avaliacao_003.view.fragments.ScheduleDetailsFragment
 import com.example.avaliacao_003.view.fragments.SpecialityDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,6 +40,13 @@ class DetailsActivity : AppCompatActivity() {
                 MedicDetailsFragment.newInstance(details.medic!!.id),
                 R.id.containerDetails
             )
+            is ScheduleWithMedicAndPatient -> {
+                println("ENTREIIIIIIIIIIIII")
+                replaceFragment(
+                    ScheduleDetailsFragment.newInstance(details.schedule!!.id),
+                    R.id.containerDetails
+                )
+            }
         }
 
     }

@@ -1,5 +1,6 @@
 package com.example.avaliacao_003.view.fragments
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.example.avaliacao_003.databinding.ScheduleFragmentBinding
 import com.example.avaliacao_003.models.*
 import com.example.avaliacao_003.utils.hideKeyboard
 import com.example.avaliacao_003.utils.snackBar
+import com.example.avaliacao_003.view.activities.DetailsActivity
 import com.example.avaliacao_003.view.activities.MainActivity
 import com.example.avaliacao_003.view_model.MedicViewModel
 import com.example.avaliacao_003.view_model.PatientViewModel
@@ -37,8 +39,10 @@ class ScheduleFragment : Fragment(R.layout.schedule_fragment) {
     private lateinit var viewModelMedic: MedicViewModel
     private lateinit var viewModelSpeciality: SpecialityViewModel
     private lateinit var recyclerView: RecyclerView
-    private var adapter = ScheduleAdapter() {
-        println(it)
+    private var adapter = ScheduleAdapter() { schedule ->
+        val intentToDetails = Intent(activity?.applicationContext, DetailsActivity::class.java)
+        intentToDetails.putExtra("details", schedule)
+        startActivity(intentToDetails)
     }
     private var selectedMedic: MedicWithSpeciality? = null
     private var selectedPatient: Patient? = null
@@ -86,6 +90,7 @@ class ScheduleFragment : Fragment(R.layout.schedule_fragment) {
 
         setupAddSchedule()
         setupSpinnerGender()
+        setupClearFilters()
 
         viewModel.getSchedules()
         viewModelMedic.getMedics()
@@ -209,6 +214,14 @@ class ScheduleFragment : Fragment(R.layout.schedule_fragment) {
             viewModel.getSchedulesByGender(gender!!)
             binding.specialityTextInputLayout.editText?.setText("")
             (requireActivity() as MainActivity).hideKeyboard()
+        }
+    }
+
+    fun setupClearFilters() {
+        binding.clearFiltersButton.setOnClickListener {
+            viewModel.getSchedules()
+            binding.patientGenderTextInputLayout.editText?.setText("")
+            binding.specialityTextInputLayout.editText?.setText("")
         }
     }
 

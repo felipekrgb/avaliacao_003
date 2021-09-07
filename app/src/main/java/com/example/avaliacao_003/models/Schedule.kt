@@ -1,6 +1,7 @@
 package com.example.avaliacao_003.models
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity
 data class Schedule(
@@ -9,7 +10,7 @@ data class Schedule(
     var id: Long = 0,
     val patientFK: Long,
     val medicFK: Long,
-)
+) : Serializable
 
 data class ScheduleWithMedicAndPatient(
     @Embedded
@@ -26,4 +27,4 @@ data class ScheduleWithMedicAndPatient(
         entityColumn = "medic_id"
     )
     val medic: Medic,
-)
+) : Serializable
