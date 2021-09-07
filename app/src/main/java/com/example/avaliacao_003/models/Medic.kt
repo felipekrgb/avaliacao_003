@@ -15,7 +15,6 @@ data class Medic(
     val specialityFK: Long
 ) : Serializable
 
-
 data class MedicWithSpeciality(
     @Embedded
     val medic: Medic?,
@@ -24,4 +23,8 @@ data class MedicWithSpeciality(
         entityColumn = "speciality_id"
     )
     val speciality: Speciality?
-) : Serializable
+) : Serializable {
+    override fun toString(): String {
+        return medic!!.name
+    }
+}

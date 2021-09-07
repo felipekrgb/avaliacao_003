@@ -37,7 +37,7 @@ class PatientAdapter(val onClick: (Patient) -> Unit) : RecyclerView.Adapter<Pati
 
 class PatientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val binding: ItemPatientBinding = ItemPatientBinding.bind(itemView)
+    private val binding = ItemPatientBinding.bind(itemView)
 
     fun bind(patient: Patient) {
         binding.idTextView.text = patient.id.toString()

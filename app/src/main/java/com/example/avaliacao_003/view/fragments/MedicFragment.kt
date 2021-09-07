@@ -4,11 +4,11 @@ import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +20,9 @@ import com.example.avaliacao_003.models.Medic
 import com.example.avaliacao_003.models.MedicWithSpeciality
 import com.example.avaliacao_003.models.Speciality
 import com.example.avaliacao_003.utils.hideKeyboard
+import com.example.avaliacao_003.utils.snackBar
 import com.example.avaliacao_003.view.activities.DetailsActivity
+import com.example.avaliacao_003.view.activities.MainActivity
 import com.example.avaliacao_003.view_model.MedicViewModel
 import com.example.avaliacao_003.view_model.SpecialityViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -89,12 +91,14 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
                     )
                 )
 
-                (requireActivity() as AppCompatActivity).hideKeyboard()
+                showSnackbar(R.string.medic_added, R.color.green)
 
                 nameEditText.text = null
                 binding.specialityTextInputLayout.editText?.setText("")
                 binding.specialityTextInputLayout.clearFocus()
                 selectedSpeciality = null
+            } else {
+                showSnackbar(R.string.medic_no_fields, R.color.red)
             }
 
         }
@@ -104,7 +108,7 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
         val adapterSpinner =
             ArrayAdapter(
                 requireContext(),
-                R.layout.spinner_item_specialities,
+                R.layout.spinner_item,
                 specialities
             )
 
@@ -119,6 +123,12 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
             val selected = parent.getItemAtPosition(position) as Speciality
             selectedSpeciality = selected
         }
+    }
+
+    private fun showSnackbar(@StringRes msgId: Int, @ColorRes colorId: Int) {
+        val activity = requireActivity() as MainActivity
+        val bottomNav = activity.binding.bottomNav
+        activity.snackBar(bottomNav, msgId, colorId)
     }
 
 }

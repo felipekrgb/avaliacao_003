@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">avaliacao_003</string>
     <string name="patient_added">Paciente adicionado com sucesso</string>
-    <string name="speciality_added">Especialidade adicionado com sucesso</string>
+    <string name="speciality_added">Especialidade adicionada com sucesso</string>
+    <string name="medic_added">Médico adicionado com sucesso</string>
+    <string name="schedule_added">Agendamento adicionado com sucesso</string>
     <string name="patient_no_fields">Digite os dados do paciente</string>
     <string name="speciality_no_fields">Digite o dado da especialidade</string>
+    <string name="medic_no_fields">Digite os dados do médico</string>
+    <string name="schedule_no_fields">Digite os dados do agendamento</string>
     <string name="no_fields_changed">Nenhum campo alterado</string>
 </resources>

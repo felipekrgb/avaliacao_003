@@ -105,7 +105,7 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
         val adapterSpinner =
             ArrayAdapter(
                 requireContext(),
-                R.layout.spinner_item_gender,
+                R.layout.spinner_item,
                 listOfGender
             )
 

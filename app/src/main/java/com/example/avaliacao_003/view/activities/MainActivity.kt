@@ -8,6 +8,7 @@ import com.example.avaliacao_003.databinding.MainActivityBinding
 import com.example.avaliacao_003.utils.replaceFragment
 import com.example.avaliacao_003.view.fragments.MedicFragment
 import com.example.avaliacao_003.view.fragments.PatientFragment
+import com.example.avaliacao_003.view.fragments.ScheduleFragment
 import com.example.avaliacao_003.view.fragments.SpecialityFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         when (intent.getStringExtra("type")) {
             "Speciality" -> replaceFragment(SpecialityFragment.newInstance())
             "Medic" -> replaceFragment(MedicFragment.newInstance())
+            "Schedule" -> replaceFragment(ScheduleFragment.newInstance())
             else -> replaceFragment(PatientFragment.newInstance())
         }
 
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.nav_patients -> replaceFragment(PatientFragment.newInstance())
                     R.id.nav_specialities -> replaceFragment(SpecialityFragment.newInstance())
                     R.id.nav_medics -> replaceFragment(MedicFragment.newInstance())
+                    R.id.nav_schedules -> replaceFragment(ScheduleFragment.newInstance())
                 }
                 true
             }

@@ -39,7 +39,7 @@ class SpecialityAdapter(val onClick: (Speciality) -> Unit) :
 
 class SpecialityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val binding: ItemSpecialityBinding = ItemSpecialityBinding.bind(itemView)
+    private val binding = ItemSpecialityBinding.bind(itemView)
 
     fun bind(speciality: Speciality) {
         binding.idTextView.text = speciality.id.toString()

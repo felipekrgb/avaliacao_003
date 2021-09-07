@@ -6,6 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.example.avaliacao_003.database.AppDatabase
 import com.example.avaliacao_003.database.dao.PatientDAO
+import com.example.avaliacao_003.models.Gender
 import com.example.avaliacao_003.models.Patient
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
@@ -36,9 +37,9 @@ class PatientDAOTest {
 
     @Test
     fun insert_patient_returns_true() {
-        val patient1 = Patient(1L, "José", 20, "Masculino")
-        val patient2 = Patient(2L, "Olga", 50, "Feminino")
-        val patient3 = Patient(3L, "Maria", 30, "Feminino")
+        val patient1 = Patient(1L, "José", 20, Gender.MALE)
+        val patient2 = Patient(2L, "Olga", 50, Gender.FEMALE)
+        val patient3 = Patient(3L, "Maria", 30, Gender.FEMALE)
 
         dao.insertPatient(patient1)
         dao.insertPatient(patient2)
@@ -52,8 +53,8 @@ class PatientDAOTest {
 
     @Test
     fun update_patient_returns_true() {
-        val patient1 = Patient(1L, "José", 20, "Masculino")
-        val patientUpdated = Patient(patient1.id, "Rogério", 32, "Masculino")
+        val patient1 = Patient(1L, "José", 20, Gender.MALE)
+        val patientUpdated = Patient(patient1.id, "Rogério", 32, Gender.MALE)
 
         dao.insertPatient(patient1)
         dao.updatePatient(patientUpdated)
@@ -64,9 +65,9 @@ class PatientDAOTest {
 
     @Test
     fun delete_patient_returns_true() {
-        val patient1 = Patient(1L, "José", 20, "Masculino")
-        val patient2 = Patient(2L, "Olga", 50, "Feminino")
-        val patient3 = Patient(3L, "Maria", 30, "Feminino")
+        val patient1 = Patient(1L, "José", 20, Gender.MALE)
+        val patient2 = Patient(2L, "Olga", 50, Gender.FEMALE)
+        val patient3 = Patient(3L, "Maria", 30, Gender.FEMALE)
 
         dao.insertPatient(patient1)
         dao.insertPatient(patient2)

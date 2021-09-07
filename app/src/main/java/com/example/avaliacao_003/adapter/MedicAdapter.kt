@@ -8,7 +8,8 @@ import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.ItemMedicBinding
 import com.example.avaliacao_003.models.MedicWithSpeciality
 
-class MedicAdapter(val onClick: (MedicWithSpeciality) -> Unit) : RecyclerView.Adapter<MedicViewHolder>() {
+class MedicAdapter(val onClick: (MedicWithSpeciality) -> Unit) :
+    RecyclerView.Adapter<MedicViewHolder>() {
 
     private var medicsList: MutableList<MedicWithSpeciality> = mutableListOf()
 
@@ -38,7 +39,7 @@ class MedicAdapter(val onClick: (MedicWithSpeciality) -> Unit) : RecyclerView.Ad
 
 class MedicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    val binding: ItemMedicBinding = ItemMedicBinding.bind(itemView)
+    val binding = ItemMedicBinding.bind(itemView)
 
     fun bind(medicWithSpeciality: MedicWithSpeciality) {
         binding.idTextView.text = medicWithSpeciality.medic?.id.toString()

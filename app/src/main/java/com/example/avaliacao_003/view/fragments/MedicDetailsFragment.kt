@@ -116,7 +116,7 @@ class MedicDetailsFragment : Fragment(R.layout.medic_details_fragment) {
         val adapterSpinner =
             ArrayAdapter(
                 requireContext(),
-                R.layout.spinner_item_specialities,
+                R.layout.spinner_item,
                 specialities
             )
 
