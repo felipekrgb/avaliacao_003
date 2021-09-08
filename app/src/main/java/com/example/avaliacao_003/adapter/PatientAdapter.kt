@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.avaliacao_003.R
 import com.example.avaliacao_003.databinding.ItemPatientBinding
+import com.example.avaliacao_003.models.Gender
 import com.example.avaliacao_003.models.Patient
 
 class PatientAdapter(val onClick: (Patient) -> Unit) : RecyclerView.Adapter<PatientViewHolder>() {
@@ -40,9 +41,10 @@ class PatientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding = ItemPatientBinding.bind(itemView)
 
     fun bind(patient: Patient) {
-        binding.idTextView.text = patient.id.toString()
         binding.nameTextView.text = patient.name
-        binding.genderTextView.text = patient.gender.type
+
+        val color = if (patient.gender == Gender.MALE) R.color.blue else R.color.pink
+        binding.patientIconImageView.setColorFilter(itemView.context.getColor(color))
     }
 
 }

@@ -80,7 +80,7 @@ class ScheduleFragment : Fragment(R.layout.schedule_fragment) {
         viewModelSpeciality = ViewModelProvider(this).get(SpecialityViewModel::class.java)
 
         recyclerView = binding.schedulesRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = adapter
 
         viewModel.schedules.observe(viewLifecycleOwner, observerSchedules)

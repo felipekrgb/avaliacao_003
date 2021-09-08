@@ -3,8 +3,8 @@ package com.example.avaliacao_003.view.fragments
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.annotation.ColorRes
@@ -49,7 +49,6 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
         }
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = PatientFragmentBinding.bind(view)
@@ -57,7 +56,8 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
         viewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
 
         recyclerView = binding.patientsRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = adapter
 
         viewModel.patients.observe(viewLifecycleOwner, observerPatients)

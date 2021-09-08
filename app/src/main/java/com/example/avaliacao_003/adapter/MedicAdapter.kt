@@ -42,8 +42,7 @@ class MedicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val binding = ItemMedicBinding.bind(itemView)
 
     fun bind(medicWithSpeciality: MedicWithSpeciality) {
-        binding.idTextView.text = medicWithSpeciality.medic?.id.toString()
-        binding.medicTextView.text = medicWithSpeciality.medic?.name
+        binding.nameTextView.text = medicWithSpeciality.medic?.name
         binding.specialityTextView.text = medicWithSpeciality.speciality?.name
     }
 

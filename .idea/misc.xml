@@ -5,10 +5,10 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_android.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/layout/details_activity.xml" value="0.12083333333333333" />
-        <entry key="app/src/main/res/layout/item_medic.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_medic.xml" value="0.45" />
         <entry key="app/src/main/res/layout/item_patient.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_schedule.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/item_speciality.xml" value="0.240625" />
+        <entry key="app/src/main/res/layout/item_speciality.xml" value="0.375" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/medic_details_fragment.xml" value="0.25" />
@@ -16,9 +16,9 @@
         <entry key="app/src/main/res/layout/patient_details_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/patient_fragment.xml" value="0.27920705514717953" />
         <entry key="app/src/main/res/layout/schedule_details_fragment.xml" value="0.240625" />
-        <entry key="app/src/main/res/layout/schedule_fragment.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/schedule_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/speciality_details_fragment.xml" value="0.240625" />
-        <entry key="app/src/main/res/layout/speciality_fragment.xml" value="0.2265625" />
+        <entry key="app/src/main/res/layout/speciality_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/spinner_item.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/layout/spinner_item_gender.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/layout/spinner_item_medics.xml" value="0.240625" />

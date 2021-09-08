@@ -66,7 +66,7 @@ class MedicFragment : Fragment(R.layout.medic_fragment) {
         viewModelSpeciality = ViewModelProvider(this).get(SpecialityViewModel::class.java)
 
         recyclerView = binding.medicsRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = adapter
 
         viewModel.medics.observe(viewLifecycleOwner, observerMedics)

@@ -41,7 +41,6 @@ class DetailsActivity : AppCompatActivity() {
                 R.id.containerDetails
             )
             is ScheduleWithMedicAndPatient -> {
-                println("ENTREIIIIIIIIIIIII")
                 replaceFragment(
                     ScheduleDetailsFragment.newInstance(details.schedule!!.id),
                     R.id.containerDetails
